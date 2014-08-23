@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Default Page Title</title>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <form id="myForm">
+        <input type="text" name="user[name]"/>
+        <input type="email" name="user[email]"/>
+        <button type="submit">Send</button>
+    </form>
+
+
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="jquery.serialize-object.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function() {
+
+            var apiURL = 'api/feedback.php';
+
+            $('#myForm').submit(function(event) {
+                var $form = $(this);
+                var data = {
+                    formData: $form.serializeObject()
+                };
+
+                $.post(apiURL,data,function(r)
+                {
+                    if(r == 'ok')
+                    {
+                        console.log('Server responded: ok :)');
+                    }
+                    console.log('Server responded: bad :(');
+                });
+
+                return false;
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

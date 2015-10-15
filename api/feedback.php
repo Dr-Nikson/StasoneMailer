@@ -34,7 +34,11 @@ function feedback()
     $mail = new PHPMailer();
 
     $mail->setFrom($config['from']['mail'], $config['from']['name']);
-    $mail->addAddress($config['to']['mail'], $config['to']['name']);
+
+    foreach($config['to'] as $reciever) {
+        $mail->addAddress($reciever['mail'], $reciever['name']);
+    }
+    
     $mail->Subject = $config['subject'];
     $mail->msgHTML($mailBody);
 

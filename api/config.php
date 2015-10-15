@@ -13,8 +13,14 @@ return array(
             'name' => 'NikNik'
         ),
         'to' => array(
-            'mail' => 'to@mail.ru',
-            'name' => 'Stasone'
+            array ( 
+                'mail' => 'to@mail.ru',
+                'name' => 'Stasone'
+            ),
+            array ( 
+                'mail' => 'to2@mail.ru',
+                'name' => 'Nachialnika'
+            )
         ),
         'subject' => 'Subject',
     )
